@@ -1,0 +1,7 @@
+# To deactivate an active environment, use
+conda deactivate
+
+# to run
+conda activate hemorrhage
+cd "FRONT END"
+python app.py

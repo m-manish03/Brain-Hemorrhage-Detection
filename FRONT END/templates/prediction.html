@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+<li><a href="{{url_for('home')}}" class="active">Home</a></li>
+<li><a href="{{url_for('about')}}">About</a></li>
+<li><a href="{{url_for('prediction')}}">Prediction</a></li>
+<li><a href="{{url_for('graph')}}">graph</a></li>
+<li><a href="{{url_for('index')}}">LogOut</a></li>  
+{% endblock %}
+
+{% block content %}
+    <main class="main">
+        <div class="page-title" style="background-image: url(assets/img/page-title-bg.jpg);">
+            <div class="container position-relative">
+                <h1>Prediction</h1><br>
+
+                {% if prediction %}
+                    <h3 style="color: #FF6500;">Result: {{prediction}}</h3>
+                    <img src="/static/saved_images/{{file_name}}" height="200px" width="300px">
+                {% endif %}
+            </div>
+        </div>
+
+        <section id="contact" class="contact section">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <center>
+                    <div class="col-6">
+                        <form action="{{url_for('prediction')}}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400" enctype="multipart/form-data">
+                            <div class="row gy-4">
+
+                                <div class="container position-relative">
+                                    <h1><br>Upload Image</h1>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="file" class="form-control" name="file" required="">
+                                </div>
+
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="col-12">Submit</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </center>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

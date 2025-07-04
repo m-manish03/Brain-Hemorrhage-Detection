@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+<li><a href="{{url_for('home')}}" class="active">Home</a></li>
+<li><a href="{{url_for('about')}}">About</a></li>
+<li><a href="{{url_for('prediction')}}">Prediction</a></li>
+<li><a href="{{url_for('graph')}}">graph</a></li>
+<li><a href="{{url_for('index')}}">LogOut</a></li>  
+{% endblock %}
+
+{% block content %}
+  <section id="about" class="about section" style="background-image: url(/static/img/background1.jpg);">
+    <div class="container" style="margin-top: 100px;">
+      <div class="row position-relative">
+        <div class="col-lg-7 about-img" data-aos="zoom-out" data-aos-delay="200"><img src="/static/img/about.jpg"></div>
+        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+          <h2 class="inner-title" style="color: white;">About</h2>
+          <div class="our-story" style="background-color: white">
+            <p style="text-align: justify;" >
+              Brain haemorrhage is a potentially fatal condition that necessitates prompt and precise diagnosis because it involves bleeding within the brain tissue. This project looks into the use of machine learning and deep learning methods to identify brain haemorrhages from medical imaging data. The objective is to increase the accuracy and consistency of diagnostic results by combining convolutional neural networks (CNNs) with conventional algorithms. Following the collection and preprocessing of a varied dataset of brain scan images, several models, including CNN, ResNet, and MobileNet, are developed and evaluated.            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> <span>"Using Deep Learning to Revolutionise Brain Haemorrhage Detection: Accuracy, Speed, and Precision."</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

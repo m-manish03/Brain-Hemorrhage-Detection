@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+  <li><a href="{{url_for('index')}}">Home</a></li>
+  <li><a href="{{url_for('register')}}" class="active">Register</a></li>
+  <li><a href="{{url_for('login')}}">Login</a></li>     
+{% endblock %}
+
+{% block content %}
+  <main class="main">
+
+    <div class="page-title" style="background-image: url(assets/img/page-title-bg.jpg);">
+      <div class="container position-relative">
+        <h1>Registration</h1>
+      </div>
+    </div>
+
+    <section id="contact" class="contact section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <center>
+          <div class="col-6">
+            <form action="{{url_for('register')}}" method="post" class="php-email-form" onsubmit="return validateForm()">
+              <div class="row gy-4">
+
+                <!-- Username -->
+                <div class="col-12">
+                  <input type="text" class="form-control" name="name" id="name" 
+                    placeholder="User Name" required pattern="^[a-zA-Z0-9_]{3,15}$"
+                    title="Username must be 3-15 characters long and contain only letters, numbers, or underscores.">
+                </div>
+
+                <!-- Email -->
+                <div class="col-12">
+                  <input type="email" class="form-control" name="email" id="email" 
+                    placeholder="Email ID" required>
+                </div>
+
+                <!-- Password -->
+                <div class="col-12">
+                  <input type="password" class="form-control" name="password" id="password"
+                    placeholder="Password" required 
+                    pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                    title="Password must be at least 8 characters long, include 1 uppercase letter, 1 number, and 1 special character.">
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="col-12">
+                  <input type="password" class="form-control" name="c_password" id="c_password"
+                    placeholder="Confirm Password" required>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <button type="submit">Submit</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </center>
+      </div>
+    </section>
+  </main>
+
+  <!-- JavaScript Validation -->
+  <script>
+    function validateForm() {
+      let password = document.getElementById("password").value;
+      let confirmPassword = document.getElementById("c_password").value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match. Please try again.");
+        return false; // Prevent form submission
+      }
+      return true;
+    }
+  </script>
+{% endblock %}

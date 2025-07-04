@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+  <li><a href="{{url_for('index')}}">Home</a></li>
+  <li><a href="{{url_for('register')}}">Register</a></li>
+  <li><a href="{{url_for('login')}}" class="active">Login</a></li>     
+{% endblock %}
+
+{% block content %}
+  <main class="main">
+
+    <div class="page-title" style="background-image: url(assets/img/page-title-bg.jpg);">
+      <div class="container position-relative">
+        <h1>Login</h1>
+      </div>
+    </div>
+
+    <section id="contact" class="contact section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <center>
+          <div class="col-6">
+            <form action="{{url_for('login')}}" method="post" class="php-email-form" onsubmit="return validateLoginForm()">
+              <div class="row gy-4">
+
+                <!-- Email Field -->
+                <div class="col-12">
+                  <input type="email" class="form-control" name="email" id="email"
+                    placeholder="Email ID" required>
+                </div>
+
+                <!-- Password Field -->
+                <div class="col-12">
+                  <div style="position: relative;">
+                    <input type="password" class="form-control" name="password" id="password"
+                      placeholder="Password" required minlength="8" autocomplete="off">
+                    <span id="togglePassword" style="position: absolute; right: 10px; top: 10px; cursor: pointer;">👁️</span>
+                  </div>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <button type="submit">Submit</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </center>
+      </div>
+    </section>
+  </main>
+
+  <!-- JavaScript Validation -->
+  <script>
+    function validateLoginForm() {
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value.trim();
+
+      if (email === "" || password === "") {
+        alert("All fields are required.");
+        return false; // Prevent form submission
+      }
+
+      if (password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return false;
+      }
+      
+      return true;
+    }
+
+    // Show/Hide Password Toggle
+    document.getElementById("togglePassword").addEventListener("click", function() {
+      let passwordField = document.getElementById("password");
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        this.textContent = "🔒"; // Change icon when password is visible
+      } else {
+        passwordField.type = "password";
+        this.textContent = "👁️"; // Change icon when password is hidden
+      }
+    });
+  </script>
+{% endblock %}
